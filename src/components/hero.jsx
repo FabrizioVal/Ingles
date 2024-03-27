@@ -1,5 +1,6 @@
-import { motion,useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import meeting from '../assets/meeting.jpg'
+import { useInView } from 'react-intersection-observer';
 
 // UX
 
@@ -19,7 +20,10 @@ const variantsTitle = {
       times: [0, 1],
       delay: [1], 
     }
-  }
+    
+  },
+  
+  
 };
 
 
@@ -38,7 +42,8 @@ const variantsSubtitle = {
       delay: [3],
 
     }
-  }
+  },
+  
 };
 
 // Variants for animation
@@ -58,20 +63,27 @@ const variantsImage = {
       delay: [5],
 
     }
-  }
+  },
+ 
 };
 
 // UI
 
 const Hero = () => {
-
   
+  const { ref } = useInView({
+    threshold: 0,
+  });
+
   return (
-    <div className="p-4 flex flex-row text-left w-screen h-screen  justify-between">
+
+
+    <div ref={ref} className="p-4 flex flex-row text-left w-screen h-screen  justify-between">
       
       {/* Left div */}
       <div className="w-1/2 p-4 text-left flex flex-col justify-between">
         <motion.div
+         
           variants={variantsTitle}
           animate="slide"
           className="text-center"
@@ -82,6 +94,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
+        
           variants={variantsSubtitle}
           animate="slide"
         >
@@ -92,6 +105,7 @@ const Hero = () => {
       {/* Right div with image */}
       <motion.div
         className="w-1/2 flex justify-center items-center"
+        
         variants={variantsImage}
         animate="slide"
       >
@@ -99,6 +113,8 @@ const Hero = () => {
       </motion.div>
     </div>
   );
+  
 }
+
 
 export default Hero;
