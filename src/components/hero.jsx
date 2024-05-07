@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import meeting from '../assets/meeting.jpg'
 import { useInView } from 'react-intersection-observer';
+import bg from '../assets/intro_bg.png';
 
 // UX
 
@@ -10,6 +11,8 @@ import { useInView } from 'react-intersection-observer';
 const variantsTitle = {
   slide: {
     
+
+
     opacity:[0,1],
     translateX: ["50%", "50%","0%"], 
     translateY: ["50%", "50%","0%"], 
@@ -78,7 +81,7 @@ const Hero = () => {
   return (
 
 
-    <div ref={ref} className="p-4 flex flex-row text-left w-screen h-screen  justify-between">
+    <div ref={ref} className="p-4 flex flex-row text-left w-screen h-screen  justify-between" style={{ backgroundImage: `url(${bg})` , backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
       {/* Left div */}
       <div className="w-1/2 p-4 text-left flex flex-col justify-between">
